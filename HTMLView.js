@@ -105,13 +105,13 @@ class HtmlView extends PureComponent {
   }
 
   render() {
-    const {RootComponent, style} = this.props;
+    const {RootComponent, style, defaultTextColor} = this.props;
     const {element} = this.state;
     if (element) {
       return (
         <RootComponent
           {...this.props.rootComponentProps}
-          style={style}
+          style={[style, {color: defaultTextColor}]}
         >
           {element}
         </RootComponent>
@@ -137,6 +137,7 @@ HtmlView.propTypes = {
   onLinkLongPress: PropTypes.func,
   paragraphBreak: PropTypes.string,
   renderNode: PropTypes.func,
+  defaultTextColor: PropTypes.string,
   RootComponent: PropTypes.func,
   rootComponentProps: PropTypes.object,
   style: ViewPropTypes.style,
@@ -152,6 +153,7 @@ HtmlView.defaultProps = {
   onLinkLongPress: null,
   onError: console.error.bind(console),
   RootComponent: View,
+  defaultTextColor: '#FFFFFF',
 };
 
 export default HtmlView;
